@@ -1,0 +1,158 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 270276 */
+    src: url('//at.alicdn.com/t/font_270276_c8vii5d11ct0529.eot');
+    src: url('//at.alicdn.com/t/font_270276_c8vii5d11ct0529.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_270276_c8vii5d11ct0529.woff') format('woff'),
+    url('//at.alicdn.com/t/font_270276_c8vii5d11ct0529.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_270276_c8vii5d11ct0529.svg#iconfont') format('svg');
+}
+
+html {
+    font-family: 'Arial','Microsoft YaHei','黑体','宋体',sans-serif;
+    height: 100%;
+}
+
+a:focus {
+    outline: 0;
+}
+
+$main-width: 100%;
+$min-width: 500px;  //1366 - 滚动条宽
+
+$sm-font-size: 12px;
+$primary-font-size: 13px;
+$title-font-size: 14px;
+$lg-font-16: 16px;
+$primary-font-color: #4a4a4a;
+$light-font-color: #9b9b9b;
+$dark-font-color: #4A4A4A;
+$primary-font-family: 'Arial','Microsoft YaHei','黑体','宋体',sans-serif;
+$primary-color: #5884F3;
+$primary-dark-color: #2E7EFF;
+
+$page-primary-padding: 50px;
+$padding-lg: 20px;
+$padding-md: 15px;
+$padding-sm: 10px;
+$padding-xs: 5px;
+
+
+$disabled-color: #999;
+$disabled-bg: #f7f7f7;
+$warning-color: #ffbf00;
+$error-color: #f04134;
+$success-color: #00a854;
+$loading-color: #ffa278;
+$red-color: #FF1743;
+
+
+
+$border-color: #bfbfbf;
+$border-radius: 4px;
+
+$mask-bg: #000;
+$mask-opacity: 0;
+$mask-zindex: 10000;
+
+// 表单元素高度: button,input
+$primary-height: 28px;
+$sm-height: 22px;
+$lg-height: 32px;
+$form-default-bg: #fff;
+$form-default-width: 122px;
+$form-lg-width: 185px;
+$form-outline: 0;
+$form-item-bg: #f8f8f8;
+
+// btn相关:字体颜色为$primary-color，边框和背景颜色独立定义
+// 样式分为default,primary,disabled
+// 尺寸分为primary,sm,lg
+$btn-yellow: #FBA71E;
+$btn-primary-padding: $padding-md;
+$btn-lg-padding: 18px;
+$btn-sm-padding: 8px;
+$btn-primary-border: $primary-color;
+$btn-primary-color: #fff;
+$btn-primary-bg: $primary-color;
+
+$btn-default-border: $border-color;
+$btn-default-color: $primary-font-color;
+$btn-default-bg: #fff;
+$btn-default-trans: #050505;
+$btn-disabled-color: $disabled-color;
+$btn-disabled-border: $border-color;
+$btn-disabled-bg: $disabled-bg;
+
+// input相关：宽度样式分为default和lg，分别可改变width和左右padding
+// 高度样式分为default=$primary-height, sm=$sm-height, lg=$lg-height
+$input-default-padding: 0px $padding-sm;
+$input-lg-padding: 0 $padding-sm;
+$input-width: $form-default-width;
+$input-lg-width: $form-lg-width;
+$input-heightlight-color: #86c3ec;
+$input-shadow-color: #93c9ea;
+$input-shadow: 0 0 5px 0 $input-shadow-color;
+$input-focus-trans: border linear .1s, box-shadow linear .2s;
+
+$textarea-lineheight: 1.4;
+$textarea-padding: $padding-xs;
+
+
+
+// checkbox相关：checkbox尺寸，背景颜色，字体大小
+$checkbox-size: 14px;
+$checkbox-color: $primary-color;
+$checkbox-font-size: $sm-font-size;
+$checkbox-border-radius: $border-radius;
+$checkbox-item-mg: 0 16px 0 0;   // list中每个checkbox之间的间距
+
+// select
+$select-default-padding: 5px 0 5px $padding-xs;  // padding-top,padding-bottom为了ie8,ff垂直居中
+$select-lg-padding: 6px 0 6px $padding-xs;
+$select-sm-padding: 2px 0 2px $padding-xs;
+$select-width: $form-default-width;
+$select-lg-width: $form-lg-width;
+
+// pagination
+$page-active-bg: $primary-color;
+$page-active-color: #fff;
+$page-btn-padding: 0 $padding-sm;  // 不使用button的padding值，不区分default, sm, lg
+
+$table-border-color: $border-color;
+$table-td-padding: $padding-sm;
+$table-tr-height: 34px;
+$table-th-bg: #E4EDFF;
+$table-th-weight: 700;
+$table-tr-odd-color: #fff;
+$table-tr-even-color: #fff;
+$table-link-color: $primary-font-color;
+
+// dialog
+$modal-width: 520px;
+$modal-top: 100px;
+$modal-bg: #fff;
+$modal-radius: 5px;
+$modal-box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+$modal-head-padding: $padding-md;
+$modal-body-padding: $padding-lg $padding-lg;
+$modal-footer-padding: $padding-sm $padding-md;
+$modal-head-bg: $modal-bg;
+$modal-inner-border-color: $primary-color;
+$prompt-zindex: $mask-zindex + 10;
+$prompt-padding: $padding-xs $padding-sm;
+$prompt-border-color: #ececec;
+
+// tabPage
+$tab-height: 32px;
+$tab-underline-color: $border-color;
+$tab-border-color: $border-color;
+$tab-bg: #f8f9fa;
+$tab-max-width: 300px;
+$tab-active-bg: #fff;
+$tab-font-color: $primary-font-color;
+
+// grid
+$grid-total-cols: 24;
+
+
+
