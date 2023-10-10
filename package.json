@@ -2,19 +2,19 @@
   "private": true,
   "author": "",
   "scripts": {
-    "dev": "max dev",
     "build": "max build",
+    "dev": "max dev",
     "format": "prettier --cache --write .",
-    "prepare": "husky install",
     "postinstall": "max setup",
-    "setup": "max setup",
-    "start": "npm run dev",
     "lint": "npm run lint:js && npm run lint:prettier && npm run tsc",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:prettier": "prettier -c --write \"**/**.{js,jsx,tsx,ts,less,md,json}\" --end-of-line auto"
+    "lint:prettier": "prettier -c --write \"**/**.{js,jsx,tsx,ts,less,md,json}\" --end-of-line auto",
+    "prepare": "husky install",
+    "setup": "max setup",
+    "start": "npm run dev"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,less}": [
@@ -24,9 +24,11 @@
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@ant-design/pro-components": "^2.4.4",
+    "@reduxjs/toolkit": "^1.9.7",
     "@umijs/max": "^4.0.75",
     "antd": "^5.4.0",
-    "jquery": "^3.7.0"
+    "jquery": "^3.7.0",
+    "react-redux": "^8.1.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",

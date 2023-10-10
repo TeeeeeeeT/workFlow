@@ -1,19 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 // @ts-ignore
-import $ from "jquery";
-import FlowChart from "@/components/FlowChart/FlowChart";
+import $ from 'jquery';
+// import FlowChart from "@/components/FlowChart/FlowChart";
+import Workflow from '@/components/workflow/index';
 
 /*
-  * @description: 首页组件
+ * @description: 首页组件
  */
 const HomePage: React.FC = () => {
   useEffect(() => {
-    console.log("$", $.lrworkflow);
+    console.log('$', $.lrworkflow);
   }, []);
 
   return (
     <div>
-      <FlowChart />
+      {/* <FlowChart /> */}
+      <Workflow id="workflow" isPreview={true} />
     </div>
   );
 };
