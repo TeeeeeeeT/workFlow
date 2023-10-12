@@ -1,4 +1,10 @@
-import React, { MouseEvent, useRef, useState } from 'react';
+import React, {
+  MouseEvent,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import { connect } from 'react-redux';
 import action from './store/action';
 // const Node = require('./node');
@@ -57,8 +63,10 @@ interface Props {
   nodeRemarks: Record<string, any>;
   changeCurrentBtn?: (arg0: string) => void;
   $nowType?: string;
+  ref?: any;
 }
-const Temp: React.FC<Props> = (props) => {
+//
+const Temp: React.FC<Props> = forwardRef((props, ref) => {
   let [focusId, setFocusId] = useState(''); //选中要素的id
   let [focusType, setFocusType] = useState(''); //选中要素的type（node或line）
   let [hasStartround, setHasStartround] = useState(false); //是否存在开始节点
@@ -76,6 +84,16 @@ const Temp: React.FC<Props> = (props) => {
 
   const $workArea = useRef<HTMLDivElement | null>(null); //创建一个容器
   const $linemover = useRef<HTMLDivElement | null>(null); //创建一个容器
+
+  // 将外部需要访问的属性和方法暴露出去
+  useImperativeHandle(ref, () => ({
+    nodes,
+    lines,
+    setNodes,
+    setLines,
+    addNode,
+    addLine,
+  }));
 
   const newGuid = () => {
     let guid = '';
@@ -1102,15 +1120,12 @@ const Temp: React.FC<Props> = (props) => {
       line.type = 'sl'; //默认为直线
       $line = drawLine(line.color, line.id, sxy, exy, line.mark, null);
     }
-    // var $draw = $('#' + dfop.id).find('svg');
-
-    // $($line)[0].dfop = dfop;
     if (line.name != '') {
       // $($line).find('text').html(line.name);
     }
-    // $draw.append($line);
     line.$line = $line;
     lines.push(line);
+    setLines([...lines]);
   };
 
   // 重构所有连向某个结点的线的显示，传参结构为$nodeData数组的一个单元结构
@@ -1559,10 +1574,13 @@ const Temp: React.FC<Props> = (props) => {
       }
     </div>
   );
-};
+});
 
 const mapStateToProps = (state: any) => state;
 const mapDispatchToProps = {
   ...action,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Temp);
+
+export default connect(mapStateToProps, mapDispatchToProps, null, {
+  forwardRef: true,
+})(Temp);
