@@ -1,0 +1,40 @@
+export default {
+  'POST /api/system/routes': {
+    code: 200,
+    msg: '请求成功',
+    data: [
+      {
+        id: 1,
+        menuId: 'home',
+        parentId: '',
+        enable: true,
+        name: '项目管理',
+        sort: 1000,
+        path: '/home',
+        direct: true,
+      },
+      {
+        id: 2,
+        menuId: 'access',
+        parentId: '',
+        enable: true,
+        name: '流程应用',
+        sort: 2000,
+        path: '/access',
+        direct: true,
+        createdAt: '2011-01-21 09:25:49',
+      },
+      {
+        id: 3,
+        menuId: 'table',
+        parentId: '',
+        enable: true,
+        name: '任务审核',
+        sort: 2001,
+        path: '/table',
+        direct: true,
+        createdAt: '1986-06-03 02:38:12',
+      },
+    ],
+  },
+};
