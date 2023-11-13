@@ -1,13 +1,22 @@
-import React from 'react';
-import { Outlet } from 'umi';
+import { Link, Outlet } from 'umi';
+import styles from './index.less';
 
-const HomePage: React.FC = (props) => {
-  // //使用 `useAppData` / `useSelectedRoutes` 可以获得更多路由信息
-  // const clientRoutes = useAppData()
-  // const routes = useSelectedRoutes();
-  console.log(props);
+export default function Layout() {
+  return (
+    <div className={styles.navs}>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/docs">Docs</Link>
+        </li>
+        {/* <li>
+          <a href="https://github.com/umijs/umi">Github</a>
+        </li> */}
+      </ul>
+      <Outlet />
+    </div>
+  );
+}
 
-  return <Outlet />;
-};
-
-export default HomePage;
