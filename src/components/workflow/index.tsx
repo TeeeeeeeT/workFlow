@@ -1,5 +1,7 @@
+import Scroll from '@/components/scroll/index';
 import React, {
   forwardRef,
+  useEffect,
   useImperativeHandle,
   useRef,
   useState,
@@ -39,13 +41,30 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
     auditornode: '传阅节点',
     childwfnode: '子流程节点',
   });
+  let [style, setStyle] = useState<any>(null);
   const areaRef = useRef<any>(null);
+  const divRef = useRef<any>(null);
 
   // 将外部需要访问的属性和方法暴露出去
   useImperativeHandle(ref, () => ({
     workflowGet,
     workflowSet,
   }));
+
+  useEffect(() => {
+    window.onresize = () => {
+      setHeight();
+    };
+    setHeight();
+
+    return () => {};
+  }, []);
+
+  const setHeight = () => {
+    let height = window.innerHeight;
+    divRef.current.style.height = height;
+    setStyle({ height: height });
+  };
 
   //获取节点、线集合
   const workflowGet = () => {
@@ -82,12 +101,14 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="lr-workflow" id={id}>
+    <div className="lr-workflow" id={id} ref={divRef} style={style}>
       <Provider store={store}>
         {!isPreview ? (
           <Tool id={id} nodeRemarks={nodeRemarks} toolBtns={toolBtns} />
         ) : null}
-        <Area id={id} nodeRemarks={nodeRemarks} ref={areaRef} />
+        <Scroll>
+          <Area id={id} nodeRemarks={nodeRemarks} ref={areaRef} />
+        </Scroll>
       </Provider>
     </div>
   );

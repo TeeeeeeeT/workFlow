@@ -1287,10 +1287,9 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="lr-workflow-work">
+    <div className="lr-workflow-work" style={{ width: 5000, height: 5000 }}>
       <div
         className="lr-workflow-workinner"
-        style={{ width: 5000, height: 5000 }}
         ref={$workArea}
         // unselectable='on'
         onClick={(e) => {

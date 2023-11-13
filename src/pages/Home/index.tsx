@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       {/* <FlowChart /> */}
       <Workflow id="workflow" isPreview={false} ref={workflowRef} />
       <div
@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
       >
         打印节点
       </div>
-    </div>
+    </>
   );
 };
 
