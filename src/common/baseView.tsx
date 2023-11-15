@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import component from '@/component/index';
-const Frame = component.frame.Frame;
+import Frame from '@/component/frame/frame';
 
 import request from "umi-request";
 
@@ -43,7 +42,6 @@ const Temp = (props: any) => {
       }}
       view={props.children}
     >
-      {/* {this.state.view} */}
     </Frame>
   );
 };
