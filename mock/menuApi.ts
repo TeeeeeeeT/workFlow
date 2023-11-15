@@ -1,0 +1,27 @@
+const list = [
+    {
+        resourceId: "tab1",
+        title: "tab1",
+        resUrl: "/",
+        resType: "01",
+        resIcon: "home",
+        children: []
+    },
+    {
+        resourceId: "tab2",
+        title: "tab2",
+        resUrl: "/docs",
+        resType: "01",
+        resIcon: "record",
+        children: []
+    }
+];
+
+export default {
+    'GET /api/v1/getMenuList': (req: any, res: any) => {
+        res.json({
+            code: 200,
+            data: list
+        });
+    },
+};

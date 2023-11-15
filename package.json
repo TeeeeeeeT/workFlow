@@ -8,12 +8,21 @@
     "setup": "umi setup",
     "start": "npm run dev"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,less}": [
+      "umi lint"
+    ]
+  },
   "dependencies": {
-    "umi": "^4.0.88"
+    "umi": "^4.0.88",
+    "umi-request": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "@umijs/lint": "^4.0.88",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
     "typescript": "^5.0.3"
   }
 }
