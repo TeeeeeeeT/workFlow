@@ -1,4 +1,3 @@
-// import Scroll from '@/components/scroll/index';
 import React, {
   forwardRef,
   useEffect,
@@ -11,13 +10,13 @@ import Area from './area';
 import './module.scss';
 import store from './store/store';
 import Tool from './tool';
+import Scroll from '@/component/scroll/index';
 
 interface Props {
   id: string;
   isPreview: boolean;
   ref?: any;
 }
-console.log(233)
 const Temp: React.FC<Props> = forwardRef((props, ref) => {
 
   let [id] = useState(props.id);
@@ -53,12 +52,12 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
   }));
 
   useEffect(() => {
-    window.onresize = () => {
-      setHeight();
-    };
-    setHeight();
+    // window.onresize = () => {
+    //   setHeight();
+    // };
+    // setHeight();
 
-    return () => {};
+    return () => { };
   }, []);
 
   const setHeight = () => {
@@ -107,9 +106,9 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
         {!isPreview ? (
           <Tool id={id} nodeRemarks={nodeRemarks} toolBtns={toolBtns} />
         ) : null}
-        {/* <Scroll> */}
+        <Scroll>
           <Area id={id} nodeRemarks={nodeRemarks} ref={areaRef} />
-        {/* </Scroll> */}
+        </Scroll>
       </Provider>
     </div>
   );

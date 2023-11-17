@@ -18,7 +18,7 @@ const Temp = (props: any) => {
     request
       .get("/api/v1/getMenuList")
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         if (response.data) {
           menu = response.data;
           setMenu(response.data);
