@@ -14,6 +14,22 @@ const list = [
         resType: "01",
         resIcon: "record",
         children: []
+    },
+    {
+        resourceId: "tab3",
+        title: "流程应用",
+        resUrl: "/schemeList",
+        resType: "01",
+        resIcon: "record",
+        children: []
+    },
+    {
+        resourceId: "table",
+        title: "table",
+        resUrl: "/table",
+        resType: "01",
+        resIcon: "record",
+        children: []
     }
 ];
 

@@ -1,0 +1,186 @@
+@import '../style/index.scss';
+@import '../style/mixin.scss';
+
+.fp-table {
+    width: 100%;
+    border-top: 1px solid $table-border-color;
+    table-layout: fixed;
+    border-collapse: collapse;
+    th, td {
+        text-align: center;
+        font-size: $sm-font-size;
+        word-break:break-all;
+        box-sizing: border-box;
+        word-wrap: break-word;
+    }
+    th {
+        padding: 14px 8px;
+        color: $primary-font-color;
+        font-size: 13px;
+        font-weight: $table-th-weight;
+        line-height: 1.2;
+        background: $table-th-bg;
+        border-bottom: 1px solid $table-border-color;
+    }
+    td {
+        padding: 12px 8px;
+        color: $primary-font-color;
+        background: $table-tr-odd-color;
+        border-bottom: 1px solid $table-border-color;
+        a {
+            color: $primary-color;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+            cursor: pointer;
+        }
+        a.fp-btn {
+            color: $btn-default-color;
+            text-decoration: none;
+        }
+        a.fp-btn-primary {
+            color: $btn-primary-color;
+            text-decoration: none;
+        }
+        a.light-font {
+            color: $light-font-color;
+        }
+    }
+    td + td, th + th {
+        border-left: 1px solid $table-border-color;
+    }
+    .fp-stripe td {
+	    background: $table-tr-even-color;
+    }
+    .text-left {
+        text-align: left;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .text-center {
+        text-align: center;
+    }
+}
+.fp-border {  //  非滚动table需要，滚动table边框在外层设置
+    border-left: 1px solid $table-border-color;
+    border-right: 1px solid $table-border-color;
+    // border-collapse: separate;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    thead th:first-child {
+        border-collapse: separate;
+        border-top-left-radius: 4px;
+    }
+    thead th:last-child {
+        border-collapse: separate;
+        border-top-right-radius: 4px;
+    }
+}
+.fp-no-border {
+    border: none;
+    td, td + td, th, th + th {
+        border: none;
+    }
+    tr + tr {
+        border-top: 1px solid #eee; 
+    }
+    th {
+        background: none;
+    }
+    td {
+        border: none;
+        background: none;
+    }
+}
+
+.fp-table-fixed-head {
+    border-right: 1px solid $table-border-color;
+    border-left: 1px solid $table-border-color;
+    border-bottom: 1px solid $table-border-color;
+    .fp-head-table {
+        table-layout: fixed;
+    }
+    // .fp-table-content-wrap {
+    //     // overflow-y: scroll;
+    // }
+    .fp-table-fixed-head-body {
+        table-layout: fixed;
+        border-top: 0;
+    }
+    .fp-table-last-tr td {
+        border-bottom: 0;
+    }
+}
+
+.fp-table-scroll-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    overflow: hidden;
+    .fp-table-scroll-content {
+        overflow-x: scroll;
+        border-left: 1px solid $table-border-color;
+        border-right: 1px solid $table-border-color;
+        border-bottom: 1px solid $table-border-color;
+        box-sizing: border-box;
+        .fp-table-fixed-head {
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 0;
+        }
+    }
+    .fp-table-left-wrap, .fp-table-right-wrap {
+        position: absolute;
+        top: 0;
+        .fp-table {
+            width: auto;
+        }
+    }
+    .fp-table-left-wrap {
+        left: 0;
+    }
+    .fp-table-right-wrap {
+        right: 0;
+    }
+    .left-shadow {
+        box-shadow: 6px 0 6px -4px rgba(0,0,0,.2);
+    }
+    .right-shadow {
+        box-shadow: -6px 0 6px -4px rgba(0,0,0,.2);
+    }
+    .fp-subTable-show{
+        height: auto;
+    }
+    .fp-subTable-hide{
+        height: 0;
+    }
+    .fp-icon{
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+    }
+    .fp-icon-collapse{
+        background: url(./images/collapse.png) center no-repeat;
+    }
+    .fp-icon-expand{
+        background: url(./images/expand.png) center no-repeat;
+    }
+}
+
+.fp-inner-table {
+    width: auto;
+    th{
+        background: #E0E0E0;
+        padding: 10px 8px;
+    }
+    td{
+        background: #F8F8F8;
+        padding: 8px;
+    }
+}
+
+
+
