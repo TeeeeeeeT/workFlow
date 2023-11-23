@@ -1,12 +1,12 @@
-// import React, { useEffect, useState } from 'react';
-// import ReactDOM from 'react-dom';
-import ReactDOM from 'react-dom/client';
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { createRoot ,hydrateRoot} from 'react-dom/client';
 
 import './module.scss';
 var dialogId = '_dialog__';
 
 
-
+let root: any = null
 var dialogControllerFactory = (id: any, mountPointClass = "") => {
     return {
         renderDialog: function (config: any) {
@@ -30,26 +30,9 @@ var dialogControllerFactory = (id: any, mountPointClass = "") => {
                 body.appendChild(dialogEle);
                 ele = dialogEle;
             }
-            console.log('renderDialog');
-            // ReactDOM.render(
-            //     <Dialog
-            //         // ref={function (dialogInstance:any) {
-            //         //     dialogInstance = dialogInstance;
-            //         // }}
-            //         visible={config.visible}
-            //         style={config.style}
-            //         wrapClassName={config.wrapClassName}
-            //         mask={config.mask}
-            //         onMaskClick={config.onMaskClick}>
-            //         {config.content}
-            //     </Dialog>, ele
-            // );
-            // const container = document.getElementById('root');
-            const root = ReactDOM.createRoot(ele);
+            // const root = ReactDOM.createRoot(ele);
+            if (!root?._internalRoot) root = createRoot(ele)
             root.render(<Dialog
-                // ref={function (dialogInstance:any) {
-                //     dialogInstance = dialogInstance;
-                // }}
                 visible={config.visible}
                 style={config.style}
                 wrapClassName={config.wrapClassName}
@@ -59,18 +42,16 @@ var dialogControllerFactory = (id: any, mountPointClass = "") => {
             </Dialog>);
         },
         destroy: function () {
-            let ele = document.getElementById(id || dialogId);
-            return (<>
-                <Dialog visible={false} />
-                {ele}
-            </>);
+            let ele2: any = document.getElementById(id || dialogId);
+            // const root = ReactDOM.createRoot(ele2);
+            if (!root?._internalRoot) root = createRoot(ele2)
         }
     };
 };
 
 const Dialog = (props: any) => {
-    // useEffect(() => {
-    // }, []);
+    useEffect(() => {
+    }, []);
 
     const mask = () => {
         if (!props.mask) {

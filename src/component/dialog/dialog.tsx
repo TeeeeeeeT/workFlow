@@ -15,28 +15,30 @@ const DialogWrap = (props: any) => {
     let [id] = useState<any>(idSub + new Date().getTime() / 10000 + Math.random() * 1000);
     let [dialogController] = useState<any>(dialogControllerFactory(id));
 
-    var cls = ['fp-dialog-content', props.wrapClassName];
-    console.log('dialogController.renderDialog');
-    dialogController.renderDialog({
-        content: <div className={cls.join(' ')}
-            style={props.style}
-            onClick={function (e) {
-                e.stopPropagation();
-            }}>
-            {props.children}
-        </div>,
-        visible: props.visible,
-        wrapClassName: 'fp-modal',
-        mask: true,
-        onMaskClick: props.onMaskClick
+    //
+    const renderd = useEffect(() => {
+        let cls = ['fp-dialog-content', props.wrapClassName];//
+        dialogController.renderDialog({
+            content: <div className={cls.join(' ')}
+                style={props.style}
+                onClick={function (e) {
+                    e.stopPropagation();
+                }}>
+                {props.children}
+            </div>,
+            visible: props.visible,
+            wrapClassName: 'fp-modal',
+            mask: true,
+            onMaskClick: props.onMaskClick
+        });
     });
-    useEffect(() => {
-    }, []);
-    return (
+
+    return (<>
+        {renderd}
         <div style={{
             display: 'none'
         }}></div>
-    );
+    </>);
 }
 
 var id = idSub + new Date().getTime() / 10000 + Math.random() * 1000;

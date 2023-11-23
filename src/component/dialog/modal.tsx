@@ -22,8 +22,8 @@ import closeImg from './images/close.png';
  * onCancel：取消按钮回调函数
  */
 const Temp = (props: any) => {
-    useEffect(() => {
-    }, []);
+    // useEffect(() => {
+    // }, []);
 
     const onMaskClick = () => {
         if (props.maskClosable) {
@@ -73,7 +73,7 @@ function contentRender(config: any) {
                 <div className='fp-modal-foot'>
                     {config.footerText ? config.footerText : null}
                     <div className='fp-button-panel'>
-                        {
+                        {/* {
                             config.okText === null ? ''
                                 : <Button
                                     onClick={config.onOk}
@@ -88,7 +88,7 @@ function contentRender(config: any) {
                             style="default"
                             noRadius={true}>
                             {config.cancelText || '取消'}
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
                 : ''
