@@ -1,0 +1,63 @@
+@import '../style/index.scss';
+@import '../style/mixin.scss';
+
+.fp-datepicker {
+	display: inline-block;
+	position: relative;
+	input {
+		padding-right: 32px;
+	}
+	i {
+		position: absolute;
+		top: 1px;
+		right: 9px;
+		width: 14px;
+		@include base-height($primary-height - 2);
+		background: url(./images/icon.png) no-repeat center;
+		border-radius: 0 $border-radius $border-radius 0;
+		cursor: pointer;
+	}
+}
+
+.fp-datepicker-lg i {
+	@include base-height($lg-height - 2);
+}
+
+.fp-datepicker-sm i {
+	@include base-height($sm-height - 2);
+}
+.fp-datepicker-text {
+	text-align: center;
+	@include base-height($primary-height - 2);
+	font-size: $sm-font-size;
+	color: $light-font-color;
+}
+.fp-col .fp-datepicker {
+	width: 100%;
+}
+
+/* .fp-ranges em {
+	position: relative;
+	overflow: hidden;
+	min-width: 36px;
+	padding: 0 12px;
+	height: 33px;
+	line-height: 33px;
+	font-size: 13px;
+	color: #404040;
+	background-color: #fafafa;
+	background-image: linear-gradient(-180deg, #fff 1%, #fafafa 100%);
+	border: 1px solid #bfbfbf;
+	border-radius: 4px;
+	float: left;
+	cursor: pointer;
+	margin-left: 10px;
+	text-align: center;
+	font-style: normal;
+}
+.fp-datepicker-active {
+	background-color: #E73A2D;
+	background-image: none;
+	border-color: #E73A2D;
+	color: #fff;
+} */

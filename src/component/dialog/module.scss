@@ -1,0 +1,328 @@
+@import '../style/index.scss';
+@import '../style/mixin.scss';
+
+.fp-mask{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top:0;
+	left:0;
+	z-index: $mask-zindex;
+	@include primary-mask;
+}
+.fp-dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $mask-zindex + 1;
+}
+.fp-dialog-content {
+	display: block;
+	position: relative;
+	width: $modal-width;
+	top: $modal-top;
+	left: 0;
+	margin: auto;
+}
+.fp-modal {
+	bottom: 0;
+	right: 0;
+}
+.fp-modal-container {
+	background: $modal-bg;
+	box-shadow: $modal-box-shadow;
+	.fp-modal-head {
+		position: relative;
+		height: 40px;
+		line-height: 40px;
+		padding: 0 20px;
+		font-size: $primary-font-size;
+	    font-weight: bold;
+		color: #fff;
+		background: $primary-color;
+		img {
+			width: 20px;
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			&:hover{
+			    cursor: pointer;
+				@include close-btn-ani;
+			}
+		}
+	}
+	.fp-modal-body {
+		padding: $modal-body-padding;
+		font-size: $sm-font-size;
+		color: $primary-font-color;
+	}
+
+	.fp-modal-foot {
+		padding: 20px 0 30px;
+		font-size: $primary-font-size;
+		color: $primary-font-color;
+		text-align: center;
+		&:after {
+			content: '';
+			clear: both;
+			display: block;
+		}
+		.fp-button-panel button {
+			width: 120px;
+			text-align: center;
+			margin: 0 10px;
+		}
+	}
+}
+
+
+
+.caih-fireplug-dialog-mount-point.caih-fireplug-prompt {
+  .fp-mask {
+	z-index: $prompt-zindex - 1;
+	opacity: 0;
+	filter:alpha(Opacity=0);
+  }
+}
+/*.dialogWrap{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 101;
+}
+.dialog{
+	position: relative;
+	display: block;
+	width: 520px;
+	top:100px;
+	left:0;
+	margin:auto;
+}
+*/
+.fp-prompt {
+	width: 100%;
+	z-index: $prompt-zindex;
+	top: 16px;
+	text-align: center;
+	pointer-events: none;
+}
+.fp-prompt-items {
+	padding: 0;
+	margin: 0;
+    li{
+        list-style: none;
+    }
+    .fp-prompt-content {
+        display: inline-block;
+        padding: $prompt-padding;
+        font-size: $sm-font-size;
+        border: 1px solid $prompt-border-color;
+        border-radius: $modal-radius;
+        box-shadow: $modal-box-shadow;
+        background-color: $modal-bg;
+        margin-bottom: 1em;
+        pointer-events: all;
+    }
+    .fp-prompt-text{
+        display: inline-block;
+        margin-left: 5px;
+        line-height: 2;
+        vertical-align: middle;
+    }
+}
+
+
+
+.fp-error-icon {
+	display: inline-block;
+	width: 15px;
+	height: 24px;
+	margin-right: 5px;
+	vertical-align: middle;
+	background: url(./images/fail.png) no-repeat center;
+}
+
+.fp-warn-icon {
+	display: inline-block;
+	width: 15px;
+	height: 24px;
+	margin-right: 5px;
+	vertical-align: middle;
+	background: url(./images/warn.png) no-repeat center;
+}
+
+.fp-success-icon{
+	display: inline-block;
+	width: 15px;
+	height: 24px;
+	margin-right: 5px;
+	vertical-align: middle;
+	background: url(./images/success.png) no-repeat center;
+}
+
+.fp-loading-icon {
+	display: inline-block;
+	width: 15px;
+	height: 24px;
+	margin-right: 5px;
+	vertical-align: middle;
+	animation: loading .5s linear infinite;
+	transform: rotate(0deg);
+	background: url(./images/loading.png) no-repeat center;
+}
+
+
+@keyframes loading{
+	0%{
+		transform: rotate(0deg);
+	}
+	50%{
+		transform: rotate(180deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
+.fp-confirm {
+	&:after{
+		content: ' ';
+		display: block;
+		visibility: hidden;
+		font-size: 0;
+		height: 0;
+		width: 0;
+		clear: both;
+	}
+    .fp-confirm-icon {
+        float: left;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 45px;
+        color: $warning-color;
+        font-family: 'iconfont';
+        font-style: normal;
+        vertical-align: middle;
+        text-align: center;
+        &:after {
+    		content:'\e62e';
+    	}
+    }
+    .fp-confirm-title {
+        font-size: $primary-font-size;
+        font-weight: bold;
+        margin: 0;
+        padding-left: 65px;
+        padding-top: 5px;
+        color: $primary-font-color;
+    }
+    .fp-record-title{
+        width: 100%;
+        text-align: center;
+        height: 25px;
+        .fp-recordconfirm-icon{
+           width: 20px;height: 17px;
+           background-image:url(./images/export.png) ;
+           background-position: center;
+           background-size:100% 100% ;
+           background-repeat: no-repeat;
+           margin-right: 8px;
+           display: inline-block;
+           margin-top: -5px;
+           vertical-align: middle;
+        }
+        p{
+            display: inline-block;
+            color: #4A4A4A;
+            letter-spacing: 0.62px;
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+    .fp-record-load{
+        width: 100%;
+        font-size: 13px;
+        color: #949494;
+        letter-spacing: 0;
+        text-align: center;
+        margin-top: 26px;
+    }
+    .fp-record-content{
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+        a{
+            font-size: 14px;
+            color: #4A4A4A;
+            letter-spacing: 0;
+            text-align: center;
+            text-decoration: underline;
+        }
+    }
+    .fp-record-btn{
+        width: 100%;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        button{
+            border-radius: 4px;
+            height: 26px;line-height: 26px;
+        }
+        .fp-record-btn-ok{
+            margin-right: 10px;
+        }
+    }
+    .fp-confirm-text {
+        font-size: $sm-font-size;
+        margin: 0;
+        margin-left: 65px;
+        margin-top: 5px;
+        color: $primary-font-color;
+    }
+    .fp-confirm-btn {
+        float: right;
+		margin-top: 20px;
+		button {
+			margin: 0 5px;
+		}
+	}
+	.fp-confirm-multi{
+		display: inline-block;
+		width: 302px;
+		padding: 10px 0;
+		margin-left: -30px;
+		margin-bottom: 10px;
+	}
+	.fp-confirm-table{
+		font-size: 12px;
+		color: #4f5050;
+		margin-top: 10px;
+		border-top: 1px solid #e9e9e9;
+		border-left: 1px solid #e9e9e9;
+		font-family: 'Microsoft YaHei';
+
+		tr {
+			height: 28px;
+			line-height: 28px;
+		}
+
+		th,
+		td {
+			width: 150px;
+			height: 28px;
+			font-size: 12px;
+			text-align: center;
+			font-weight: normal;
+			border-bottom: 1px solid #e9e9e9;
+			border-right: 1px solid #e9e9e9;
+		}
+	}
+}
+
+
+
+
+

@@ -1,0 +1,30 @@
+@import '../style/index.scss';
+@import '../style/mixin.scss';
+
+
+.fp-row-wrap {
+}
+.fp-row-wrap:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.fp-col {
+    float: left;
+    box-sizing: border-box;
+    input, .fp-form-select {
+        width: 100%
+    }
+}
+
+
+@for $i from 1 through $grid-total-cols {
+    .fp-col-#{$i} { 
+        width: column-width($i) 
+    };
+    .fp-offset-#{$i} { 
+        margin-left: column-width($i) 
+    };
+}

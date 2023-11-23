@@ -26,19 +26,17 @@ import './module.scss';
  * 增加noBorder，true表示表格无边框
  */
 const Temp = (props: any) => {
-    let [cls, setCls] = useState<any>(['fp-table', 'fp-border']);
     useEffect(() => {
-        if (props.data.noBorder) {
-            cls.push('fp-no-border');
-        }
-        if (props.className) {
-            cls.push(props.className);
-        }
-        setCls({ ...cls });
-
-        return () => { };
     }, []);
 
+    let cls = ['fp-table', 'fp-border'];
+    //      let cls = ['ltable'];
+    if (props.data.noBorder) {
+        cls.push('fp-no-border');
+    }
+    if (props.className) {
+        cls.push(props.className);
+    }
     return (
         <table className={cls.join(' ')} style={props.style}>
             <thead>
@@ -46,34 +44,34 @@ const Temp = (props: any) => {
                     {
                         props.data.struct.map(function (o: any, i: any) {
                             if (typeof o.title == 'function') {
-                                return <th className={o.className || ''} style={{ width: o.width }}>{o.title.call(o, i)}</th>;
+                                return <th className={o.className || ''} style={{ width: o.width }} key={i}>{o.title.call(o, i)}</th>;
                             } else {
-                                return <th className={o.className || ''} style={{ width: o.width }}>{o.title}</th>;
+                                return <th className={o.className || ''} style={{ width: o.width }} key={i}>{o.title}</th>;
                             }
-                        }.bind(this))
+                        })
                     }
                 </tr>
             </thead>
             <tbody>
                 {
                     props.data.data.length ? props.data.data.map(function (o: any, i: any) {
-                        var className;
+                        let className;
                         if (props.data.stripe) {
                             className = i % 2 ? 'fp-stripe' : '';
                         }
 
-                        return <tr className={className} data-index={i}>
+                        return <tr className={className} data-index={i} key={i}>
                             {
                                 props.data.struct.map(function (p: any, e: any) {
                                     if (typeof p.key == 'function') {
-                                        return <td className={p.className || ''}>{p.key.call(o, i, e, p)}</td>;
+                                        return <td className={p.className || ''} key={e}>{p.key.call(o, i, e, p)}</td>;
                                     } else {
-                                        return <td className={p.className || ''}>{o[p.key]}</td>;
+                                        return <td className={p.className || ''} key={e}>{o[p.key]}</td>;
                                     }
                                 })
                             }
                         </tr>;
-                    }.bind(this)) : (
+                    }) : (
                         <tr>
                             <td style={{ textAlign: 'center' }} colSpan={props.data.struct.length}>{props.emptyText || '未查询到数据'}</td>
                         </tr>
