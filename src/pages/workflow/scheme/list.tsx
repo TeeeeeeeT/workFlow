@@ -3,6 +3,8 @@ import ListView from '@/common/listview';
 import Button from '@/component/button';
 import Modal from '@/component/dialog/modal';
 
+import Form from './form';
+
 const Temp = (props: any) => {
     const tabs = {
         items: ['<div>122</div>', (d: any) => {
@@ -96,17 +98,19 @@ const Temp = (props: any) => {
             visible={createModalVisible}
             title='新增流程模板'
             style={{
-                width: 500,
-                height: 500
+                top: 20,
+                width: 1200,
+                height: 650
             }}
-            onCancel={() => { 
-                setCreateModalVisible(false) 
+            onCancel={() => {
+                setCreateModalVisible(false)
             }}
-            onOk={() => { 
-                setCreateModalVisible(false) 
+            onOk={() => {
+                setCreateModalVisible(false)
             }}
+            footer={null}
         >
-            <div>666</div>
+            <Form />
         </Modal>
     </>);
 }
