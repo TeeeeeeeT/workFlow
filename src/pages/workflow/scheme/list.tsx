@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ListView from '@/common/listview';
 import Button from '@/component/button';
 import Modal from '@/component/dialog/modal';
@@ -79,13 +79,19 @@ const Temp = (props: any) => {
     ];
 
     let [createModalVisible, setCreateModalVisible] = useState<boolean>(false);
+    const listViewRef = useRef<any>(null);
 
     useEffect(() => {
     }, []);
 
+    const saveFormCallback = () =>{
+        setCreateModalVisible(false);
+        listViewRef.current.queryList();
+    }
 
     return (<>
         <ListView
+            ref={listViewRef}
             url={'/workflow/schemeInfo/getPageList'}
             method="get"
             contentType="application/json"
@@ -110,7 +116,7 @@ const Temp = (props: any) => {
             }}
             footer={null}
         >
-            <Form />
+            <Form saveCallback={saveFormCallback} />
         </Modal>
     </>);
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import request from '@/utils/request';
 
 import Pagination from '@/component/pagination/index';
@@ -12,7 +12,7 @@ import TabPage from '@/component/tabPage/index';
 
 
 
-const Temp = (props: any) => {
+const Temp = forwardRef((props: any, ref) => {
     let [totalCount, setTotalCount] = useState<any>();
     let [table, setTable] = useState<any>({
         isCollapse: props.tableCollapse,
@@ -33,6 +33,10 @@ const Temp = (props: any) => {
         { name: 500, value: 500 }
     ];
 
+    // 将外部需要访问的属性和方法暴露出去
+    useImperativeHandle(ref, () => ({
+        queryList
+    }));
 
     useEffect(() => {
         queryList();
@@ -203,7 +207,7 @@ const Temp = (props: any) => {
                     (!props.hidePageNum || !props.hideQueryStatus) ?
                     <div className='mPageSize tClear'>
                         {
-                            props.operations && props.operations.map(function (d: any,i:any) {
+                            props.operations && props.operations.map(function (d: any, i: any) {
                                 return <div key={i}>{d}</div>;
                             })
                         }
@@ -253,6 +257,6 @@ const Temp = (props: any) => {
             }
         </div>
     </div>);
-}
+})
 
 export default Temp;

@@ -22,23 +22,7 @@ const list = [
         resType: "01",
         resIcon: "record",
         children: []
-    },
-    // {
-    //     resourceId: "tab4",
-    //     title: "流程应用2",
-    //     resUrl: "/schemeList2",
-    //     resType: "01",
-    //     resIcon: "record",
-    //     children: []
-    // },
-    // {
-    //     resourceId: "table",
-    //     title: "table",
-    //     resUrl: "/table",
-    //     resType: "01",
-    //     resIcon: "record",
-    //     children: []
-    // }
+    }
 ];
 
 export default {

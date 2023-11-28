@@ -33,6 +33,8 @@ const Temp: React.FC<Props> = (props) => {
     let sh = $scroll.current?.clientHeight; //获取的是包含scroll包含children组件的高度
     let sw = $scroll.current?.clientWidth;
 
+    console.log($scroll.current?.scrollHeight)
+
     let h = $wrap.current?.clientHeight;
     let w = $wrap.current?.clientWidth;
     op = {
@@ -47,19 +49,10 @@ const Temp: React.FC<Props> = (props) => {
       xw: 0,
       callback: function () { },
     };
+    console.log('op', op);
     setOp({ ...op });
-    // $this[0].op = data;
-    // methods.update($this);
-    // methods.bindEvent($this, $scroll, $vertical, $horizontal);
 
     update();
-    // bindEvent();
-
-    // $scroll = null;
-    // $content = null;
-    // $vertical = null;
-    // $horizontal = null;
-    // $this = null;
 
     moveStyle = {
       MozUserSelect: 'none',
@@ -106,7 +99,7 @@ const Temp: React.FC<Props> = (props) => {
     op.isYMousedown = true;
     op.yMousedown = e.pageY;
     setOp({ ...op });
-    
+
     verticalBlockClass.push('lr-scroll-active');
     setVerticalBlockClass([...verticalBlockClass]);
   };
@@ -177,6 +170,7 @@ const Temp: React.FC<Props> = (props) => {
   };
 
   const scrollOnresize = () => {
+    console.log('scrollOnresize');
     if (op) {
       let sh = $scroll.current?.clientHeight;
       let sw = $scroll.current?.clientWidth;
@@ -189,6 +183,7 @@ const Temp: React.FC<Props> = (props) => {
         op.sw = sw;
         updateX();
       }
+      console.log(op);
     }
   };
 
@@ -339,7 +334,7 @@ const Temp: React.FC<Props> = (props) => {
       Object.assign(newCss, scrollStyle);
       newCss.left = 0;
       setScrollStyle({ ...newCss });
-      
+
       let newCss2: any = {};
       Object.assign(newCss, horizontalBlockStyle);
       newCss2.left = 0;
@@ -448,7 +443,7 @@ const Temp: React.FC<Props> = (props) => {
       Object.assign(newCss, scrollStyle);
       newCss.left = _sx;
       setScrollStyle({ ...newCss });
-      
+
       let newCss2: any = {};
       Object.assign(newCss2, horizontalBlockStyle);
       newCss2.left = op.blockX;
@@ -525,6 +520,9 @@ const Temp: React.FC<Props> = (props) => {
           id={id + '_box'}
           style={scrollStyle}
           ref={$scroll}
+          onResize={() => {
+            scrollOnresize();
+          }}
         >
           {props.children}
         </div>

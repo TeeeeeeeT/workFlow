@@ -8,3 +8,11 @@ export async function schemeGetPageList(data) {
     })
 }
 
+export async function schemeInfoSaveForm(data) {
+    return request({
+        url: '/workflow/schemeInfo/SaveForm',
+        method: 'post',
+        data
+    })
+}
+

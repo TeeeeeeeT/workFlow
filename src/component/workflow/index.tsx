@@ -52,19 +52,9 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
   }));
 
   useEffect(() => {
-    // window.onresize = () => {
-    //   setHeight();
-    // };
-    // setHeight();
 
     return () => { };
   }, []);
-
-  const setHeight = () => {
-    let height = window.innerHeight;
-    divRef.current.style.height = height;
-    setStyle({ height: height });
-  };
 
   //获取节点、线集合
   const workflowGet = () => {
@@ -100,8 +90,12 @@ const Temp: React.FC<Props> = forwardRef((props, ref) => {
     }
   };
 
+  const onResize = () => {
+    console.log(344)
+  }
+
   return (
-    <div className="lr-workflow" id={id} ref={divRef} style={style}>
+    <div className="lr-workflow" id={id} ref={divRef} style={style} onResize={() => { onResize() }}>
       <Provider store={store}>
         {!isPreview ? (
           <Tool id={id} nodeRemarks={nodeRemarks} toolBtns={toolBtns} />

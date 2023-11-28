@@ -65,7 +65,8 @@ service.interceptors.response.use(
             //       query: { redirect: router.currentRoute.path }
             //     })
             //   })
-            return
+            return Promise.reject(error.response.data)
+            // return;
         }
         if (error.response.status === 500) {
             //   Message({

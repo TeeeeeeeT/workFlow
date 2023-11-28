@@ -45,6 +45,7 @@ var dialogControllerFactory = (id: any, mountPointClass = "") => {
             let ele2: any = document.getElementById(id || dialogId);
             // const root = ReactDOM.createRoot(ele2);
             if (!root?._internalRoot) root = createRoot(ele2)
+            root.render(<Dialog visible={false}/>, ele2);
         }
     };
 };

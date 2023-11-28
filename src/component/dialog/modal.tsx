@@ -24,7 +24,6 @@ import closeImg from './images/close.png';
 const Temp = (props: any) => {
     // useEffect(() => {
     // }, []);
-
     const onMaskClick = () => {
         if (props.maskClosable) {
             if (props.onCancel) {
@@ -58,7 +57,7 @@ const Temp = (props: any) => {
 }
 
 function contentRender(config: any) {
-    return <div>
+    return <>
         {
             config.title ?
                 <div className={'fp-modal-head'}>
@@ -73,7 +72,7 @@ function contentRender(config: any) {
                 <div className='fp-modal-foot'>
                     {config.footerText ? config.footerText : null}
                     <div className='fp-button-panel'>
-                        {/* {
+                        {
                             config.okText === null ? ''
                                 : <Button
                                     onClick={config.onOk}
@@ -88,12 +87,12 @@ function contentRender(config: any) {
                             style="default"
                             noRadius={true}>
                             {config.cancelText || '取消'}
-                        </Button> */}
+                        </Button>
                     </div>
                 </div>
                 : ''
         }
-    </div>;
+    </>;
 }
 
 export default Temp;
