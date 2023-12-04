@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { createRoot ,hydrateRoot} from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
 import './module.scss';
 var dialogId = '_dialog__';
 
-
-let root: any = null
 var dialogControllerFactory = (id: any, mountPointClass = "") => {
+    let root: any = null;
     return {
         renderDialog: function (config: any) {
 
@@ -25,13 +24,15 @@ var dialogControllerFactory = (id: any, mountPointClass = "") => {
                 var body = document.getElementsByTagName('body')[0];
                 var dialogEle = document.createElement('div');
                 dialogEle.id = id || dialogId;
-                var className = ['caih-fireplug-dialog-mount-point', mountPointClass].filter(e => e).join(" ");
+                var className = ['cnki-fireplug-dialog-mount-point', mountPointClass].filter(e => e).join(" ");
                 dialogEle.className = className;
                 body.appendChild(dialogEle);
                 ele = dialogEle;
             }
             // const root = ReactDOM.createRoot(ele);
             if (!root?._internalRoot) root = createRoot(ele)
+
+            // root = createRoot(ele);
             root.render(<Dialog
                 visible={config.visible}
                 style={config.style}
@@ -44,8 +45,8 @@ var dialogControllerFactory = (id: any, mountPointClass = "") => {
         destroy: function () {
             let ele2: any = document.getElementById(id || dialogId);
             // const root = ReactDOM.createRoot(ele2);
-            if (!root?._internalRoot) root = createRoot(ele2)
-            root.render(<Dialog visible={false}/>, ele2);
+            if (!root?._internalRoot) root = createRoot(ele2);
+            root.render(<Dialog visible={false} />);
         }
     };
 };

@@ -4,7 +4,7 @@ import request from '@/utils/request';
 import Pagination from '@/component/pagination/index';
 import Queryform from '@/component/queryform/queryform';
 import Select from '@/component/select/index';
-// var Prompt = hcComponent.dialog.Prompt;
+import Prompt from '@/component/dialog/prompt';
 import Table from '@/component/table/table';
 import ScrollTable from '@/component/table/scrollTable';
 import CollapseTable from '@/component/table/collapseTable';
@@ -65,43 +65,34 @@ const Temp = forwardRef((props: any, ref) => {
         }
         let thisLocation = window.location.href.split('?')[0];
 
-        // var ms = Prompt.loading();
+        var ms = Prompt.loading();
 
         return request({
             url: props.url,
             method: props.method || 'get',
             // data: params
+        }).then((res: any) => {
+            props.returnData && props.returnData(res.data);
+
+            totalCount = (props.totalCountFormat && props.totalCountFormat(res.data.rows))
+                || (res.data.pageIndex && res.data.totalCount)
+                || 0;
+            setTotalCount(totalCount);
+
+            let newtable: any = {};
+            Object.assign(newtable, table);
+            newtable.data = res.data.rows;
+            setTable(newtable);
+
+            // if (window.location.href.split('?')[0] == thisLocation) {
+            //     setHash();
+            // }
+        }).catch((data) => {
+            console.log('%%%%%%');
+            Prompt.error('查询失败! ');
+        }).finally(() => {
+            ms.destroy();
         })
-            .then((res: any) => {
-                props.returnData && props.returnData(res.data);
-
-                totalCount = (props.totalCountFormat && props.totalCountFormat(res.data.rows))
-                    || (res.data.pageIndex && res.data.totalCount)
-                    || 0;
-                setTotalCount(totalCount);
-
-                let newtable: any = {};
-                Object.assign(newtable, table);
-                newtable.data = res.data.rows;
-                setTable(newtable);
-
-                // if (window.location.href.split('?')[0] == thisLocation) {
-                //     setHash();
-                // }
-            })
-            .catch((data) => {
-                console.log('%%%%%%');
-                // var detail = '';
-                // if (json && json.codeMsg) {
-                //     detail = '[code:' + json.code + ']' + json.codeMsg;
-                // }
-                // Prompt.error('查询失败! ' + detail);
-                // this.state.table.data = [];
-                // this.setState({});
-            })
-            .finally(() => {
-                // ms.destroy();
-            })
     }
 
     const setHash = () => {
