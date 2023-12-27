@@ -1,5 +1,3 @@
-//弃用弃用弃用
-
 $primary-height: 34px;
 
 /**
@@ -49,6 +47,7 @@ $primary-height: 34px;
         min-height: 54px;
         padding: 10px 0 10px 100px;
 
+        //标题
         .form-item-title {
             position: absolute;
             // top: 18px;
@@ -63,28 +62,45 @@ $primary-height: 34px;
             font-family: "Microsoft Ya Hei";
         }
 
+        //右侧输入框等等
         .form-control {
             color: #000;
             border-radius: 0;
             box-shadow: none;
             font-size: 9pt;
             height: $primary-height;
-            padding-top: 0;
-            padding-bottom: 1px;
-            padding-right: 0;
-            padding-left: 5px;
             resize: none;
-            border-radius: 2px;
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
+            
+
+            input{
+                height: $primary-height;
+                border-radius: 2px;
+                background-color: #ffffff;
+                border: 1px solid #cccccc;
+            }
+            input:focus {
+                border-color: #66afe9;
+                outline: 0;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+            }
+
+            .cnki-field-error {
+                border-color: #ff5d48 !important;
+            }
+
+            .cnki-field-error-info {
+                position: absolute;
+                top: 18px;
+                right: 3px;
+                color: #ff5d48;
+                font-size: 16px;
+                background-color: #fff;
+                cursor: pointer;
+            }
         }
 
-        .form-control:focus {
-            border-color: #66afe9;
-            outline: 0;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-        }
+        
     }
 
 
