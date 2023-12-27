@@ -54,7 +54,7 @@ const Temp = (props: any) => {
             </thead>
             <tbody>
                 {
-                    props.data.data.length ? props.data.data.map(function (o: any, i: any) {
+                    props.data.data.length ? props.data.data.map((o: any, i: any) => {
                         let className;
                         if (props.data.stripe) {
                             className = i % 2 ? 'fp-stripe' : '';
@@ -62,9 +62,9 @@ const Temp = (props: any) => {
 
                         return <tr className={className} data-index={i} key={i}>
                             {
-                                props.data.struct.map(function (p: any, e: any) {
+                                props.data.struct.map((p: any, e: any) => {
                                     if (typeof p.key == 'function') {
-                                        return <td className={p.className || ''} key={e}>{p.key.call(o, i, e, p)}</td>;
+                                        return <td className={p.className || ''} key={e}>{p.key.call(this, o, i, e, p)}</td>;
                                     } else {
                                         return <td className={p.className || ''} key={e}>{o[p.key]}</td>;
                                     }

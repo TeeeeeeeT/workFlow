@@ -6,6 +6,7 @@ interface Props {
     list: any;
     /**根据返回true、false来决定步骤是否变动 */
     onChange?: (arg0: BackData) => boolean;
+    /**保存按钮的回调方法 */
     saveClick?: () => void
 }
 /**

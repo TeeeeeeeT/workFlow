@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './module.scss';
 
+/**临时存放的滚动条参数，防止异步渲染state值丢失 */
 let tempOp: any = {};
 interface Props {
     id?: string;
@@ -105,6 +106,7 @@ const Temp = (props: Props) => {
             if ($wrap.current) {
                 resizeObserver.unobserve($wrap.current)
             }
+            tempOp = {};
         }
 
     }, []);

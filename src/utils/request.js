@@ -46,7 +46,6 @@ service.interceptors.response.use(
             //   store.dispatch('user/updateToken', { token: response.headers.token })
             console.log("new token:" + response.headers.token);
         }
-        console.log(response);
         return response.data
     },
     error => {

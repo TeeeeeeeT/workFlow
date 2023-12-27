@@ -60,8 +60,11 @@ BasePrompt.prototype.add = function (item: any) {
         //延时移除弹窗
         setTimeout(() => {
             removeItem(this.list, id);
+            // this.render({
+            //     mask: this.list.length == 0 ? false : true
+            // });
             this.render({
-                mask: this.list.length == 0 ? false : true
+                mask: item.mask
             });
         }, item.duration || this.duration);
     }
@@ -87,6 +90,14 @@ function removeItem(arr: any[], id: any) {
     }
     arr.splice(e, 1);
     return arr;
+}
+
+BasePrompt.prototype.clearAll = function () {
+    this.list = [];
+
+    this.render({
+        mask: false
+    });
 }
 
 
@@ -127,3 +138,8 @@ export default {
         });
     }
 };
+
+/**清除所有提示 */
+export function clearPrompt() {
+    base.clearAll();
+}

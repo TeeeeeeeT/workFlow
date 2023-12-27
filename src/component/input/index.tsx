@@ -42,7 +42,7 @@ const Temp = (props: any) => {
         props.onChange && props.onChange(e);
     }
 
-    const onClick = (e:any) =>{
+    const onClick = (e: any) => {
         props.onClick && props.onClick(e);
     }
 
@@ -52,7 +52,7 @@ const Temp = (props: any) => {
 
 
     var cls = [
-        props.className, 'fp-form-input'
+        'fp-form-input', props.className
     ];
 
     if (props.size) {

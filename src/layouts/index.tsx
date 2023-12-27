@@ -1,30 +1,27 @@
 import { useLocation, Outlet } from 'umi';
-// import styles from './index.less';
 import Login from '@/pages/login/index';
 import BaseView from '@/common/baseView';
 
 export default function Layout() {
-  const location = useLocation();
-  if (location.pathname === '/login') {
-    return <Login></Login>
-  }
+    const location = useLocation();
+    if (location.pathname === '/login') {
+        return <Login></Login>
+    }
+    // var url = window.location.href;
 
-  return (
-    <BaseView><Outlet /></BaseView>
-    // <div className={styles.navs}>
-    //   <ul>
-    //     <li>
-    //       <Link to="/">Home</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/docs">Docs</Link>
-    //     </li>
-    //     {/* <li>
-    //       <a href="https://github.com/umijs/umi">Github</a>
-    //     </li> */}
-    //   </ul>
-    //   <Outlet />
-    // </div>
-  );
+    // var params: any = {}, hash;
+    // var hashes: any = [];
+    // if (url.indexOf('?') > -1) {
+    //     hashes = url.slice(url.indexOf('?') + 1).split('&');
+    // }
+
+    // for (var i = 0; i < hashes.length; i++) {
+    //     hash = hashes[i].split('=');
+    //     params[hash[0]] = hash[1];
+    // }
+    // console.log('params', params);
+
+    return (
+        <BaseView><Outlet /></BaseView>
+    );
 }
-

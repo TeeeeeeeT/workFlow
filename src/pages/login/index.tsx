@@ -9,6 +9,7 @@ import pswPng from '@/assets/images/login/default_psw0.png';
 
 import { login } from '@/api/account';
 import { getToken, setToken, removeToken } from '@/utils/auth';
+import Prompt from '@/component/dialog/prompt';
 
 const Temp = (props:any) => {
     let [account, setAccount] = useState<string>('');
@@ -19,15 +20,22 @@ const Temp = (props:any) => {
 
     const onLoginSubmit = (e: any) => {
         e.preventDefault();
-        console.log(account);
-        // let { account, password } = _this.state.data;
+
+        let ms = Prompt.loading('登录中...');
         login({ account: account.trim(), password: password }).then((res: any) => {
-            if (res.data) {
-                setToken(res.data.token);
+            if(res.code == 200){
+                if (res.data) {
+                    setToken(res.data.token);
+                    history.push('/');
+                }
+                return;
             }
-            history.push('/');
+            Prompt.error(res.info);
+            
         }).catch((error: any) => {
             console.log(error);
+        }).finally(() => {
+            ms.destroy();
         });
     }
 

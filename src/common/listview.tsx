@@ -1,6 +1,7 @@
 import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
-import request from '@/utils/request';
+import { useLocation, useParams, useSearchParams } from 'umi';
 
+import request from '@/utils/request';
 import Pagination from '@/component/pagination/index';
 import Queryform from '@/component/queryform/queryform';
 import Select from '@/component/select/index';
@@ -32,6 +33,8 @@ const Temp = forwardRef((props: any, ref) => {
         { name: 100, value: 100 },
         { name: 500, value: 500 }
     ];
+    
+    const [searchParams, setSearchParams] = useSearchParams();
 
     // 将外部需要访问的属性和方法暴露出去
     useImperativeHandle(ref, () => ({
@@ -70,7 +73,7 @@ const Temp = forwardRef((props: any, ref) => {
         return request({
             url: props.url,
             method: props.method || 'get',
-            // data: params
+            params: params
         }).then((res: any) => {
             props.returnData && props.returnData(res.data);
 
@@ -87,6 +90,7 @@ const Temp = forwardRef((props: any, ref) => {
             // if (window.location.href.split('?')[0] == thisLocation) {
             //     setHash();
             // }
+            setHash();
         }).catch((data) => {
             console.log('%%%%%%');
             Prompt.error('查询失败! ');
@@ -99,18 +103,19 @@ const Temp = forwardRef((props: any, ref) => {
         if (!props.params) {
             return;
         }
-        var hashlocal = props.hashlocal;
-        if (!hashlocal) {
-            return;
-        }
+        // var hashlocal = props.hashlocal;
+        // if (!hashlocal) {
+        //     return;
+        // }
         var params = props.params;
-        var km = [];
-        for (var i in params) {
-            if (params[i] !== undefined && params[i] !== '' && params[i] !== null) {
-                km.push(i + '=' + params[i]);
-            }
-        }
-        window.location.replace('#' + hashlocal + '?' + encodeURI(km.join('&')));
+        // var km = [];
+        // for (var i in params) {
+        //     if (params[i] !== undefined && params[i] !== '' && params[i] !== null) {
+        //         km.push(i + '=' + params[i]);
+        //     }
+        // }
+        // window.location.replace('#' + hashlocal + '?' + encodeURI(km.join('&')));
+        setSearchParams(params)
     }
 
     const onPageChange = (page: any) => {

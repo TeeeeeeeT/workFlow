@@ -21,7 +21,7 @@ import closeImg from './images/close.png';
  * onOK：确定按钮回调函数
  * onCancel：取消按钮回调函数
  */
-const Temp = (props: any) => {
+const Modal = (props: any) => {
     // useEffect(() => {
     // }, []);
     const onMaskClick = () => {
@@ -56,6 +56,98 @@ const Temp = (props: any) => {
     );
 }
 
+Modal.show = function (config: any) {
+    var cls = ['fp-modal-container', config.wrapClassName];
+    var d = Dialog.show({
+        visible: config.visible,
+        onMaskClick: function () {
+            if (typeof config.maskClosable == 'undefined' || config.maskClosable) {
+                d.destroy();
+                if (config.onCancel) {
+                    config.onCancel();
+                }
+            }
+
+        },
+        style: config.style,
+        wrapClassName: cls.join(' '),
+        content: contentRender({
+            title: config.title,
+            content: config.content,
+            bodyClass: config.bodyClass,
+            footer: config.footer,
+            cancelText: config.cancelText,
+            okText: config.okText,
+            onCancel: function () {
+                d.destroy();
+                if (config.onCancel) {
+                    config.onCancel();
+                }
+
+            },
+            onOk: function () {
+                d.destroy();
+                if (config.onOk) {
+                    config.onOk();
+                }
+
+            }
+        })
+    });
+
+    return d;
+};
+Modal.confirm = function (config: any) {
+    var d = Modal.show({
+        content: <div className='fp-confirm'>
+            <span className='fp-confirm-icon'></span>
+            <h3 className='fp-confirm-title'>
+                {config.title}
+            </h3>
+            <div className='fp-confirm-text'>
+                {config.content}
+            </div>
+            <div className='fp-confirm-btn'>
+                <Button
+                    onClick={function () {
+                        // d.destroy();
+                        if (config.onOk) {
+                            config.onOk();
+                        }
+
+                    }}
+                    size="sm"
+                    style="primary"
+                    noRadius={true}>
+                    {config.okText || '确定'}
+                </Button>
+                {
+                    config.hideCancelBtn ? null
+                        : <Button
+                            onClick={function () {
+                                d.destroy();
+                                if (config.onCancel) {
+                                    config.onCancel();
+                                }
+
+                            }.bind(this)}
+                            className='fp-modal-cancelBtn'
+                            size="sm"
+                            style="default"
+                            noRadius={true}>
+                            {config.cancelText || '取消'}
+                        </Button>
+                }
+
+
+            </div>
+        </div>,
+        footer: null,
+        style: config.style || { width: 400, height: 200 },
+        maskClosable: config.maskClosable
+    });
+    return d;
+};
 function contentRender(config: any) {
     return <>
         {
@@ -95,4 +187,4 @@ function contentRender(config: any) {
     </>;
 }
 
-export default Temp;
+export default Modal;
