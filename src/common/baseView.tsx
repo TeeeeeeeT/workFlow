@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Frame from '@/component/frame/frame';
+import { Frame } from 'cmao-ui';
+
 import request from "umi-request";
+import { history } from 'umi';
 
 interface Props {
     children?: any;
@@ -28,15 +30,18 @@ const Temp = (props: Props) => {
             });
     }
 
+    const clickMenu = (url: string) => {
+        history.push(url)
+    }
+
     return (
         <Frame
-            menu={{
-                items: menu
-            }}
-            headMenu={{}}
+            menu={{ items: menu }}
             view={props.children}
+            clickCallback={clickMenu}
         >
         </Frame>
+        // <div>ddd</div>
     );
 }
 export default Temp;

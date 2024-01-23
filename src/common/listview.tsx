@@ -2,14 +2,9 @@ import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'rea
 import { useLocation, useParams, useSearchParams } from 'umi';
 
 import request from '@/utils/request';
-import Pagination from '@/component/pagination/index';
-import Queryform from '@/component/queryform/queryform';
-import Select from '@/component/select/index';
-import Prompt from '@/component/dialog/prompt';
-import Table from '@/component/table/table';
-import ScrollTable from '@/component/table/scrollTable';
-import CollapseTable from '@/component/table/collapseTable';
-import TabPage from '@/component/tabPage/index';
+
+import { Pagination, Queryform, Select, Dialog, Table, ScrollTable, CollapseTable, TabPage } from 'cmao-ui';
+const Prompt = Dialog.Prompt;
 
 
 
@@ -33,7 +28,7 @@ const Temp = forwardRef((props: any, ref) => {
         { name: 100, value: 100 },
         { name: 500, value: 500 }
     ];
-    
+
     const [searchParams, setSearchParams] = useSearchParams();
 
     // 将外部需要访问的属性和方法暴露出去

@@ -1,6 +1,6 @@
 // import yayJpg from '../assets/yay.jpg';
 import React, { useEffect, useRef } from 'react';
-import Workflow from '@/component/workflow/index';
+import { Workflow } from 'cmao-ui';
 
 const HomePage = () => {
   useEffect(() => {

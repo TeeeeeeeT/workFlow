@@ -8,4 +8,15 @@ export default defineConfig({
     { path: "/schemeList", component: "workflow/scheme/list" }
   ],
   npmClient: 'pnpm',
+  extraBabelPlugins: [
+    ['import', { libraryName: "cmao-ui", style: true }],
+  ],
+  // mfsu: false
+  mfsu: {
+    shared: {
+      react: {
+        singleton: true,
+      },
+    },
+  }
 });

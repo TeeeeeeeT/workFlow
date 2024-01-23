@@ -1,25 +1,33 @@
-import { useLocation, Outlet } from 'umi';
+import React from 'react';
+import { useLocation, Outlet, useOutletContext, useOutlet } from 'umi';
 import Login from '@/pages/login/index';
 import BaseView from '@/common/baseView';
+import { getUrlVars } from '@/common/common';
+// import List from '@/pages/workflow/scheme/list';
 
 export default function Layout() {
     const location = useLocation();
     if (location.pathname === '/login') {
         return <Login></Login>
     }
-    // var url = window.location.href;
 
-    // var params: any = {}, hash;
-    // var hashes: any = [];
-    // if (url.indexOf('?') > -1) {
-    //     hashes = url.slice(url.indexOf('?') + 1).split('&');
-    // }
+    // let params: any = {};
+    // let urlParams = getUrlVars(location.search);
+    // Object.assign(urlParams, params);
+    // params = { ...urlParams };
 
-    // for (var i = 0; i < hashes.length; i++) {
-    //     hash = hashes[i].split('=');
-    //     params[hash[0]] = hash[1];
+    // console.log(useOutletContext());
+    // let tt = useOutlet()
+    // console.log('useOutlet', tt);
+    // if (tt) {
+    //     // tt.props.params = urlParams;
+    //     // let tempProps = { ...tt.props };
+    //     // Object.assign(tempProps, { params: urlParams });
+    //     // tt.props = { ...tempProps };
+
+    //     console.log('tt.props',tt.props)
+    //     Object.assign(tt.props, { value: urlParams });
     // }
-    // console.log('params', params);
 
     return (
         <BaseView><Outlet /></BaseView>

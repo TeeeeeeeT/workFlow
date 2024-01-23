@@ -1,11 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Wizard from '@/component/wizard/index';
-import Row from '@/component/grid/row';
-import Col from '@/component/grid/col';
-import Input from '@/component/input/index';
-import Workflow from '@/component/workflow/index';
-import Form from '@/component/form/index';
-import Prompt from '@/component/dialog/prompt';
+import { Wizard, Grid, Input, Workflow, Form, Dialog } from 'cmao-ui';
+const Row = Grid.Row;
+const Col = Grid.Col;
+const Prompt = Dialog.Prompt;
 
 import { schemeInfoGetFormById, schemeInfoSaveForm } from '@/api/workflow/scheme';
 
@@ -61,7 +58,6 @@ const Temp = (props: Props) => {
                 ms.destroy();
             });
         }
-
     }, []);
 
     /**步骤切换change回调 */

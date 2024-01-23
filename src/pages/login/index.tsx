@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  history } from "umi";
+import { history } from "umi";
 
 import '@/assets/style/login.scss';
 import accountPng from '@/assets/images/login/default_account0.png';
@@ -9,9 +9,10 @@ import pswPng from '@/assets/images/login/default_psw0.png';
 
 import { login } from '@/api/account';
 import { getToken, setToken, removeToken } from '@/utils/auth';
-import Prompt from '@/component/dialog/prompt';
+import { Dialog } from 'cmao-ui';
+const Prompt = Dialog.Prompt;
 
-const Temp = (props:any) => {
+const Temp = (props: any) => {
     let [account, setAccount] = useState<string>('');
     let [password, setPassword] = useState<string>('');
 
@@ -23,7 +24,7 @@ const Temp = (props:any) => {
 
         let ms = Prompt.loading('登录中...');
         login({ account: account.trim(), password: password }).then((res: any) => {
-            if(res.code == 200){
+            if (res.code == 200) {
                 if (res.data) {
                     setToken(res.data.token);
                     history.push('/');
@@ -31,7 +32,7 @@ const Temp = (props:any) => {
                 return;
             }
             Prompt.error(res.info);
-            
+
         }).catch((error: any) => {
             console.log(error);
         }).finally(() => {
@@ -52,7 +53,6 @@ const Temp = (props:any) => {
                 <img src={leftPng} />
                 {/* 登录框 正常登录 */}
                 <div className="lr-login-main lr-login-normal">
-
                     {/* 密码登录 */}
                     <div className="lr-login-bypsw noreg">
                         <div className="error_info">*&nbsp;<span>密码不正确</span></div>

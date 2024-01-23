@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useLocation, useParams, useSearchParams } from 'umi';
+import { useLocation } from 'umi';
 import ListView from '@/common/listview';
-import Button from '@/component/button';
-import Modal from '@/component/dialog/modal';
-import Prompt from '@/component/dialog/prompt';
+import { Button, Dialog } from 'cmao-ui';
+const Prompt = Dialog.Prompt;
+const Modal = Dialog.Modal;
 import Form from './form';
 import { getUrlVars } from '@/common/common';
 import { schemeInfoDeleteInfoById } from '@/api/workflow/scheme';
-
 interface Props {
     params?: any
 }
@@ -69,9 +68,9 @@ const Temp = (props: Props) => {
     Object.assign(urlParams, params);
     params = { ...urlParams };
 
-    for (let o in props.params) {
-        params[o] = props.params[o];
-    }
+    // for (let o in props.params) {
+    //     params[o] = props.params[o];
+    // }
     params.pageSize = params.pageSize || 10;
     params.pageIndex = params.pageIndex || 1;
     // 
