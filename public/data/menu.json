@@ -1,0 +1,55 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "resourceId": "/systemManage",
+            "title": "系统管理",
+            "resUrl": "/systemManage",
+            "resType": "01",
+            "resIcon": "home",
+            "children": [
+                {
+                    "resourceId": "/sss",
+                    "title": "日志管理",
+                    "resUrl": "/",
+                    "resType": "01",
+                    "resIcon": "home",
+                    "children": [
+                        {
+                            "resourceId": "/systemManage/visitLogList",
+                            "title": "访问日志",
+                            "resUrl": "/systemManage/visitLogList",
+                            "resType": "01",
+                            "resIcon": "home",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "resourceId": "/",
+            "title": "tab1",
+            "resUrl": "/",
+            "resType": "01",
+            "resIcon": "home",
+            "children": []
+        },
+        {
+            "resourceId": "/docs",
+            "title": "tab2",
+            "resUrl": "/docs",
+            "resType": "01",
+            "resIcon": "record",
+            "children": []
+        },
+        {
+            "resourceId": "/schemeList",
+            "title": "流程应用",
+            "resUrl": "/schemeList",
+            "resType": "01",
+            "resIcon": "record",
+            "children": []
+        }
+    ]
+}

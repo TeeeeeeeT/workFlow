@@ -126,7 +126,7 @@ const Temp = (props: Props) => {
     return (<>
         <ListView
             ref={listViewRef}
-            url={'/workflow/schemeInfo/getPageList'}
+            url={'/api/workflow/schemeInfo/getPageList'}
             method="get"
             contentType="application/json"
             params={params}

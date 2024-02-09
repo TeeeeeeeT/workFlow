@@ -8,7 +8,7 @@ import {  history } from "umi";
 
 // create an axios instance
 const service = axios.create({
-    baseURL: 'http://localhost:5002', // url = base url + request url
+    baseURL: '', //  url = base url + request url
     withCredentials: true, // send cookies when cross-domain requests
     timeout: 30000 // request timeout
     // `transformResponse` allows changes to the response data to be made before
@@ -64,8 +64,9 @@ service.interceptors.response.use(
             //       query: { redirect: router.currentRoute.path }
             //     })
             //   })
-            return Promise.reject(error.response.data)
-            // return;
+            // return Promise.reject(error.response.data)
+            history.push('/login');
+            return;
         }
         if (error.response.status === 500) {
             //   Message({

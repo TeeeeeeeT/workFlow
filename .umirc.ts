@@ -4,8 +4,19 @@ export default defineConfig({
   routes: [
     { path: "/", component: "index" },
     { path: "/login" },
+    {
+      path: "/systemManage",
+      // 嵌套路由
+      routes: [
+        {
+          path: "/systemManage/visitLogList",
+          component: "systemManage/log/visitLogList"
+        }
+      ]
+    },
     { path: "/docs", component: "docs" },
-    { path: "/schemeList", component: "workflow/scheme/list" }
+    { path: "/schemeList", component: "workflow/scheme/list" },
+
   ],
   npmClient: 'pnpm',
   extraBabelPlugins: [
@@ -18,5 +29,13 @@ export default defineConfig({
         singleton: true,
       },
     },
-  }
+  },
+  proxy: {
+    '/api': {
+      // 'target': 'http://localhost:5002/',
+      'target': 'http://www.vicclz.com:5002/',
+      'changeOrigin': true,
+      'pathRewrite': { '^/api': '' },
+    }
+  },
 });
