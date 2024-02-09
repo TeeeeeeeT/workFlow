@@ -3,7 +3,7 @@ import { defineConfig } from "umi";
 export default defineConfig({
   routes: [
     { path: "/", component: "index" },
-    { path: "/login" },
+    { path: "/login", component: "login/index" },
     {
       path: "/systemManage",
       // 嵌套路由
