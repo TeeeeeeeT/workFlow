@@ -16,6 +16,7 @@ export default defineConfig({
     },
     { path: "/docs", component: "docs" },
     { path: "/schemeList", component: "workflow/scheme/list" },
+    { path: "/taskList", component: "workflow/task/list" },
 
   ],
   npmClient: 'pnpm',
@@ -32,8 +33,8 @@ export default defineConfig({
   },
   proxy: {
     '/api': {
-      // 'target': 'http://localhost:5002/',
-      'target': 'http://www.vicclz.com:5002/',
+      'target': 'http://localhost:5002/',
+      // 'target': 'http://120.132.122.154:5002/',
       'changeOrigin': true,
       'pathRewrite': { '^/api': '' },
     }

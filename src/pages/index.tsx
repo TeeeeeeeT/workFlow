@@ -11,6 +11,13 @@ const HomePage = () => {
     // workflowRef.current.workflowSet('set', op);
   }, []);
 
+  const c = (d: any) => {
+    console.log(d);
+  }
+  const b = (d: any) => {
+    console.log(d);
+  }
+
   const workflowRef = useRef<any>(null);
   return (
     // <div>
@@ -22,7 +29,7 @@ const HomePage = () => {
     //     To get started, edit <code>pages/index.tsx</code> and save to reload.
     //   </p>
     // </div>
-    <Workflow id="workflow" isPreview={false} ref={workflowRef} />
+    <Workflow id="workflow" isPreview={false} ref={workflowRef} openNode={c} openLine={b} />
   );
 }
 

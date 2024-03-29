@@ -50,6 +50,14 @@
             "resType": "01",
             "resIcon": "record",
             "children": []
+        },
+        {
+            "resourceId": "/taskList",
+            "title": "代办",
+            "resUrl": "/taskList",
+            "resType": "01",
+            "resIcon": "record",
+            "children": []
         }
     ]
 }

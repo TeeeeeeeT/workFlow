@@ -27,7 +27,7 @@ service.interceptors.request.use(
         // do something before request is sent
         var token = getToken()
         if (token) {
-            config.headers['Authorization'] = `Bearer ${token}` // 让每个请求携带自定义token 请根据实际情况自行修改
+            config.headers['Authorization'] = `${token}` // 让每个请求携带自定义token 请根据实际情况自行修改 Bearer
         }
         return config
     },

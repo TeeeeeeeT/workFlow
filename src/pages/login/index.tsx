@@ -23,15 +23,17 @@ const Temp = (props: any) => {
         e.preventDefault();
 
         let ms = Prompt.loading('登录中...');
-        login({ account: account.trim(), password: password }).then((res: any) => {
-            if (res.code == 200) {
-                if (res.data) {
-                    setToken(res.data.token);
-                    history.push('/');
-                }
-                return;
-            }
-            Prompt.error(res.info);
+        login({ userName: account.trim(), password: password }).then((res: any) => {
+            // if (res.code == 200) {
+            //     if (res.data) {
+            //         setToken(res.data.token);
+            //         history.push('/');
+            //     }
+            //     return;
+            // }
+            // Prompt.error(res.info);
+            setToken(res.token);
+            history.push('/');
 
         }).catch((error: any) => {
             console.log(error);

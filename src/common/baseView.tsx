@@ -29,8 +29,8 @@ const Temp = (props: Props) => {
         }).finally(() => {
             //根据url获取菜单id
             let list = menu.items || [];
-            let id = getMenuIdByUrl(list,location.pathname);
-            if(id){
+            let id = getMenuIdByUrl(list, location.pathname);
+            if (id) {
                 setMenuSelect(id);
             }
         })
@@ -46,15 +46,15 @@ const Temp = (props: Props) => {
         let id = '';
         list.forEach(function (o: any) {
             //
-            if (o.children&& o.children.length>0) {
-                let tmpId = getMenuIdByUrl(o.children,url);
-                if(tmpId){
+            if (o.children && o.children.length > 0) {
+                let tmpId = getMenuIdByUrl(o.children, url);
+                if (tmpId) {
                     id = tmpId;
                     return false;
                 }
             }
-            else{
-                if(o.resUrl == url){
+            else {
+                if (o.resUrl == url) {
                     id = o.resourceId;
                     return false;
                 }
@@ -89,7 +89,7 @@ const Temp = (props: Props) => {
         <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0 }}>
             <Menu data={menu.items} activeId={menu.activeId} clickCallback={clickMenu}></Menu>
         </div>
-        <div style={{ position: 'absolute', left: 200 }}>
+        <div style={{ position: 'absolute', left: 200, top: 0, right: 0, bottom: 0 }}>
             {props.children}
         </div>
     </>

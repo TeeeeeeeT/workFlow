@@ -7,7 +7,9 @@ import { Pagination, Queryform, Select, Dialog, Table, ScrollTable, CollapseTabl
 const Prompt = Dialog.Prompt;
 
 
-
+/**
+ * 针对弹窗页中列表查询使用
+ */
 const Temp = forwardRef((props: any, ref) => {
     let [totalCount, setTotalCount] = useState<any>();
     let [table, setTable] = useState<any>({
@@ -29,7 +31,7 @@ const Temp = forwardRef((props: any, ref) => {
         { name: 500, value: 500 }
     ];
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    // const [searchParams, setSearchParams] = useSearchParams();
 
     // 将外部需要访问的属性和方法暴露出去
     useImperativeHandle(ref, () => ({
@@ -115,7 +117,7 @@ const Temp = forwardRef((props: any, ref) => {
         //     }
         // }
         // window.location.replace('#' + hashlocal + '?' + encodeURI(km.join('&')));
-        setSearchParams(params)
+        // setSearchParams(params)
     }
 
     const onPageChange = (page: any) => {
