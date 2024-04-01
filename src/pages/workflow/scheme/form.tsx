@@ -56,9 +56,9 @@ const Temp = (props: Props) => {
             var ms = Prompt.loading();
             schemeInfoGetFormById({ id: props.id }).then((res: any) => {
                 if (res.code == 200) {
-                    wrapForm.setData(res.data.info);
-                    if (res.data.scheme && res.data.scheme.content) {
-                        let shceme = JSON.parse(res.data.scheme.content);
+                    wrapForm.setData(res.data);
+                    if (res.data.schemeObj) {
+                        let shceme = res.data.schemeObj;
                         let op = {
                             data: shceme
                         }

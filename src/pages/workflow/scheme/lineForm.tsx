@@ -31,10 +31,10 @@ const Temp = (props: Props) => {
 
     useEffect(() => {
         switch (props.fromNode.type) {
-            case 'startround':// 开始节点
+            case 1:// 开始节点
                 nav = ['基本设置'];
                 break;
-            case 'stepnode':   // 审核节点
+            case 3:   // 审核节点
                 nav = ['基本设置'];
                 break;
         }
@@ -86,7 +86,7 @@ const Temp = (props: Props) => {
     const handleHtml = () => {
         let _html = null;
         switch (props.fromNode.type) {
-            case 'startround':
+            case 1:
                 _html = <Form name='' form={wrapForm}>
                     <TabPage nav={nav} active={active} onChange={onchange}>
                         <>
@@ -97,7 +97,7 @@ const Temp = (props: Props) => {
                     </TabPage>
                 </Form>
                 break;
-            case 'stepnode':
+            case 3:
                 _html = <Form name='' form={wrapForm}>
                     <TabPage nav={nav} active={active} onChange={onchange}>
                         <>

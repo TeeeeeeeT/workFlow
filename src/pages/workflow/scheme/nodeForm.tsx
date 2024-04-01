@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Wizard, Grid, Input, Workflow, Form, Dialog, TabPage, Button } from 'cmao-ui';
+import { Wizard, Grid, Input, Workflow, Form, Dialog, TabPage, Button,Select } from 'cmao-ui';
 const Row = Grid.Row;
 const Col = Grid.Col;
 const Prompt = Dialog.Prompt;
@@ -41,21 +41,21 @@ const Temp = (props: Props) => {
         // })
 
         switch (props.node.type) {
-            case 'startround':// 开始节点
+            case 1:// 开始节点
                 nav = ['基本设置'];
                 break;
-            case 'stepnode':   // 审核节点
+            case 3:   // 审核节点
                 nav = ['基本设置'];
                 break;
         }
         // console.log(props.node)
         let tmpData = props.node;
-        if(tmpData.isAllAuditor == true){
-            tmpData.isAllAuditor = "true";
-        }
-        else{
-            tmpData.isAllAuditor = 'false';
-        }
+        // if(tmpData.isAllAuditor == true){
+        //     tmpData.isAllAuditor = "true";
+        // }
+        // else{
+        //     tmpData.isAllAuditor = 'false';
+        // }
         wrapForm.setData(props.node)
         setNav([...nav]);
     }, []);
@@ -71,13 +71,13 @@ const Temp = (props: Props) => {
         if (wrapForm.checkRule && !wrapForm.checkRule()) {
             return;
         }
-        //手动转true false
-        if(wrapForm.data!.isAllAuditor == 'true'){
-            wrapForm.data!.isAllAuditor = true;
-        }
-        else{
-            wrapForm.data!.isAllAuditor = false;
-        }
+        // //手动转true false
+        // if(wrapForm.data!.isAllAuditor == 'true'){
+        //     wrapForm.data!.isAllAuditor = true;
+        // }
+        // else{
+        //     wrapForm.data!.isAllAuditor = false;
+        // }
         console.log(wrapForm.data);
         props.saveCallback && props.saveCallback(wrapForm.data!);
     }
@@ -86,7 +86,7 @@ const Temp = (props: Props) => {
     const handleHtml = () => {
         let _html = null;
         switch (props.node.type) {
-            case 'startround':
+            case 1:
                 _html = (<Form name='' form={wrapForm}>
                     <TabPage nav={nav} active={active} onChange={onchange}>
                         <>
@@ -107,7 +107,7 @@ const Temp = (props: Props) => {
                     </TabPage>
                 </Form>);
                 break;
-            case 'stepnode':
+            case 3:
                 _html = (<Form name='' form={wrapForm}>
                     <TabPage nav={nav} active={active} onChange={onchange}>
                         <>
@@ -117,11 +117,13 @@ const Temp = (props: Props) => {
                             <Form.Item title='节点名称' name='name' isValid={true} rules={{ checkExpession: 'NotNull' }}>
                                 <Input placeholder="请输入" />
                             </Form.Item>
-                            <Form.Item title='所有审核者' name='isAllAuditor' type='radio' isValid={true} rules={{ checkExpession: 'NotNull' }}>
-                                <input name="isAllAuditor" type="radio" value='false' />
+                            <Form.Item title='所有审核者' name='isAllAuditor' type='select' isValid={true} rules={{ checkExpession: 'NotNull' }}>
+                                {/* <input name="isAllAuditor" type="radio" value='false' />
                                 <span>只要其中一人审核</span>
                                 <input name="isAllAuditor" type="radio" value='true' />
-                                <span>都需要审核</span>
+                                <span>都需要审核</span> */}
+                                
+                                <Select options={[{ name: '只要其中一人审核', value: false }, { name: '都需要审核', value: true }]} size="lg" wtype='1' disabled={false} />
                             </Form.Item>
                         </>
 
